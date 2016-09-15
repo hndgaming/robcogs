@@ -26,7 +26,7 @@ class cust_chan:
         self.created_channels = []
 
     def wait_thing(self):
-        self.server_id = "177855243231428608"#"184694956131221515" 
+        self.server_id = "184694956131221515"#"184694956131221515" 
         self.server = self.bot.get_server(self.server_id)
         self.speak_chan = self.bot.get_channel("185833952278347793")
 
