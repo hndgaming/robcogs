@@ -117,7 +117,6 @@ def check_files():
 
     if not os.path.isfile("data/custom_channel/settings.json"):
         print("Creating empty settings.json...")
-        fileIO("data/custom_channel/.json")
         fileIO("data/custom_channel/settings.json", "save", settings)
 
 
