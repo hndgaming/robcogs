@@ -61,7 +61,7 @@ class cust_chan:
             if not x:
                 await self.bot.say("Sorry, you don't have permissions to create a custom channel {}".format(ctx.message.author.mention))
                 return
-                
+
             if self.server == None:
                 self.wait_thing()
 
@@ -129,15 +129,11 @@ def check_folders():
 def check_files():
     settings = {"destruct_time": 30}
     servers = {"dummy" : 0}
-
-
+    
     if not os.path.isfile("data/custom_channel/settings.json"):
         print("Creating empty settings.json...")
         fileIO("data/custom_channel/settings.json", "save", settings)
 
-    if not os.path.isfile("data/custom_channel/servers.json"):
-        print("Creating empty servers.json...")
-        fileIO("data/custom_channel/servers.json", "save", settings)
 
 
 def setup(bot):
