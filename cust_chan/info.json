@@ -1,7 +1,16 @@
 {
+<<<<<<< HEAD
+    "AUTHOR" : "TitanAndWire",
+    "INSTALL_MSG" : "A custom built cog for HND - custom channel generation",
+    "NAME" : "cust_chan",
+    "SHORT" : "TBC",
+    "DESCRIPTION" : "TBC"
+}
+=======
 	"AUTHOR": "Robert",
 	"INSTALL_MSG":"A custom channel generator for HND",
 	"NAME": "cust_chan",
 	"SHORT": "TBC",
 	"DESCRIPTION": "TBC"
 }
+>>>>>>> 78e3f1ac8b8fc15302e2adeb4808f59a50cc8b4e

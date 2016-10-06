@@ -67,8 +67,8 @@ class cust_chan:
             #await self.bot.say("ch_command_")
             chans = self.server.channels #fetches all channels from server
             len_chans = sum(1 for _ in chans)
-            voice_chan = await self.bot.create_channel(self.server, "[{}] ".format(game.upper())+" ".join(text), type=discord.ChannelType.voice)
-            await self.bot.say("Created {}".format(" ".join(text)))
+            voice_chan = await self.bot.create_channel(self.server, "[{}] ".format(game.upper())+" ".join(text[:8]), type=discord.ChannelType.voice)
+            await self.bot.say("Created {}".format(" ".join(text[:8])))
 
             position = None
             for channel in self.server.channels: 
@@ -87,7 +87,9 @@ class cust_chan:
             await self.bot.say("Type `-game list` for the list of approved games. If you don't see yours listed ask a staff member to add it!")
 
     async def destructor(self, memeber, member_2):
-
+        if self.server == None:
+            self.wait_thing()
+    
         channels = self.server.channels
         if channels is not None:
             for channel in channels:
