@@ -27,9 +27,9 @@ class cust_chan:
         self.created_channels = []
 
     def wait_thing(self):
-        self.server_id = "184694956131221515" 
+        self.server_id = "215477025735966722"#"184694956131221515" 
         self.server = self.bot.get_server(self.server_id)
-        self.speak_chan = self.bot.get_channel("221785653799550986")
+        self.speak_chan = self.bot.get_channel("215621140612120577")
 
     @commands.group(pass_context = True)
     @checks.mod_or_permissions(administrator = True, moderator = True)
@@ -62,19 +62,18 @@ class cust_chan:
                 await self.bot.say("Sorry, you don't have permissions to create a custom channel {}".format(ctx.message.author.mention))
                 return
 
-            if self.server == None:
-                self.wait_thing()
-
             for w in text:
                 if w in self.words:
-                    self.bot.send_message(self.speak_chan, "User {} tried to create a channel with the blacklisted word {} in it".format(ctx.message.author, w))
+                    self.bot.send_message("221785653799550986", "User {} tried to create a channel with the blacklisted word {} in it".format(ctx.message.author, w))
                     return
 
+            if self.server == None:
+                self.wait_thing()
             #await self.bot.say("ch_command_")
             chans = self.server.channels #fetches all channels from server
             len_chans = sum(1 for _ in chans)
             voice_chan = await self.bot.create_channel(ctx.message.server, "[{}] ".format(game.upper())+" ".join(text[:8]), type=discord.ChannelType.voice)
-            await self.bot.say("Created {}".format(" ".join(text[:8])))
+            await self.bot.say("Created {}".format(" ".join(text)))
 
             #list of channels - insert channel at position wanted i.e. after custom divider. Call move_channels
 
@@ -129,11 +128,15 @@ def check_folders():
 def check_files():
     settings = {"destruct_time": 30}
     servers = {"dummy" : 0}
-    
+
+
     if not os.path.isfile("data/custom_channel/settings.json"):
         print("Creating empty settings.json...")
         fileIO("data/custom_channel/settings.json", "save", settings)
 
+    if not os.path.isfile("data/custom_channel/servers.json"):
+        print("Creating empty servers.json...")
+        fileIO("data/custom_channel/servers.json", "save", settings)
 
 
 def setup(bot):
